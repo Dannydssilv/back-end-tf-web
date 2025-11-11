@@ -7,80 +7,85 @@ Ana Paula Souza Carvalho:https://github.com/anapaulaszc Daniely dos Santos Silva
 Atv 5:
 
 URL API: https://literate-space-garbanzo-4j64r7qwvvp93j75v-3000.app.github.dev
+
 [GET] /admin:
     Descrição: 
-    {
+[
+  {
     "id": 1,
-    "nome":"Lívia Cunha",
-    "email": "livia.cunha@email.com", 
-    "senha": "chatgpt1l0ve"
-    },
-    {
+    "nome": "Lívia Cunha",
+    "email": "livia.cunha@email.com" 
+  },
+  {
     "id": 2,
-    "nome":"Franklin Eduardo",
-    "email": "franklin.eduardo@email.com", 
-    "senha": "naofiznada"
-    }
-
-    {
+    "nome": "Franklin Eduardo",
+    "email": "franklin.eduardo@email.com"
+  },
+  {
     "id": 3,
-    "nome":"Daniely Silva",
-    "email": "danny.silva@email.com", 
-    "senha": "arianagrande4maior"
-    }
-
+    "nome": "Daniely Silva",
+    "email": "danny.silva@email.com"
+  }
+]
 [GET] /admin/1
 
 Descrição:
+[
 {
     "id": 1,
     "nome":"Lívia Cunha",
     "email": "livia.cunha@email.com", 
     "senha": "chatgpt1l0ve"
 }
-
+]
 [POST] /admin
 
 Descrição:
+[
 {
     "id": 4,
     "nome":"Maria Eloisa",
     "email": "malo12sa.costa@email.com", 
 }
-
+]
 Body:
+[
 {
     "id": 4,
     "nome":"Maria Eloisa",
     "email": "malo12sa.costa@email.com", 
     "senha": "gbfgbfn"
 }
-
+]
 [PUT] /admin/4
 
 Descrição:
+[
 {
     "id": 4,
     "nome":"Maria Eloisa",
     "email": "malo12sa.costa@email.com", 
 }
-
+]
 Body:
+[
 {
     "id": 4,
     "nome":"Maria Eloisa",
     "email": "malo12sa.costa@email.com", 
     "senha": "aqswswfgbfn"
 }
-
+]
 [DELETE] /admin/2
-Descrição: 
+Descrição:
+[ 
 "Administrador excluído com sucesso!"
-
+]
 //Flashcards//
 
 [GET] /flashcards:
-    Descrição: 
+Descrição:  
+[
   {
     "id": 1,
     "pergunta": "Qual é a segunda lei de Newton?",
@@ -136,43 +141,52 @@ Descrição:
     "pergunta": "Qual o principal gás responsável pelo efeito estufa?",
     "resposta": "Dióxido de carbono ($CO_2$)."
   }
-
+]
 
 [GET] /flashcards/1
 
 Descrição:
+[
 {
     "id": 1,
     "pergunta": "Qual é a segunda lei de Newton?",
     "resposta": "Força é igual a massa vezes a aceleração (F = m * a)."
 }
-
+]
 [POST] /flashcards
 
 Descrição:
+[
 {
   "mensagem": "Flashcard criado com sucesso!",
   "id": 10
 }
-
+]
 Body:
+[
 {
   "pergunta": "Qual biblioteca usamos para criptografar senhas na rota /admin?",
   "resposta": "A biblioteca bcrypt."
 }
-
+]
 [PUT] /flashcards/10
 
 Descrição:
+[
 {
   "mensagem": "Flashcard atualizado com sucesso!"
 }
-
+]
 Body:
+[
 {
   "resposta": "A biblioteca bcrypt, para garantir a segurança dos dados."
 }
-
+]
 [DELETE] /flashcards/10
 Descrição: 
+[
+{
 "Flashcard excluído com sucesso!"
+}
+]
