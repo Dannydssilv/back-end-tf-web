@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "back-end-tf-web",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
