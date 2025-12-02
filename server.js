@@ -132,7 +132,7 @@ app.post("/admin", async (req, res) => {
         const senhaHash = await bcrypt.hash(senha, SALT_ROUNDS);
 
         const db = conectarBD();
-        const consulta = "INSERT INTO administrador (nome, email, senha) VALUES ($1, $2, $3) RETURNING id AS id, nome, email";
+        const consulta = "INSERT INTO admin (nome, email, senha) VALUES ($1, $2, $3) RETURNING id AS id, nome, email";
         const resultado = await db.query(consulta, [nome, email, senhaHash]); 
 
         res.status(201).json({ mensagem: "Administrador criado com sucesso!", admin: resultado.rows[0] });
@@ -148,7 +148,7 @@ app.post("/admin", async (req, res) => {
 app.get("/admin", async (req, res) => {
     const db = conectarBD();
     try {
-        const resultado = await db.query("SELECT id AS id, nome, email FROM administrador"); 
+        const resultado = await db.query("SELECT id AS id, nome, email FROM admin"); 
         res.json(resultado.rows);
     } catch (e) {
         console.error("Erro ao listar administradores:", e);
@@ -160,7 +160,7 @@ app.get("/admin/:id", async (req, res) => {
     try {
         const id = parseInt(req.params.id, 10);
         const db = conectarBD();
-        const consulta = "SELECT id AS id, nome, email FROM administrador WHERE id = $1"; 
+        const consulta = "SELECT id AS id, nome, email FROM admin WHERE id = $1"; 
         const resultado = await db.query(consulta, [id]);
         const dados = resultado.rows;
 
@@ -186,7 +186,7 @@ app.put("/admin/:id", async (req, res) => {
         const senhaHash = await bcrypt.hash(senha, SALT_ROUNDS);
 
         const db = conectarBD();
-        const consulta = "UPDATE administrador SET nome = $1, email = $2, senha = $3 WHERE id = $4 RETURNING id";
+        const consulta = "UPDATE admin SET nome = $1, email = $2, senha = $3 WHERE id = $4 RETURNING id";
         const resultado = await db.query(consulta, [nome, email, senhaHash, id]); 
 
         if (resultado.rowCount === 0) {
@@ -205,7 +205,7 @@ app.delete("/admin/:id", async (req, res) => {
         const id = parseInt(req.params.id, 10);
         const db = conectarBD();
 
-        const consulta = "DELETE FROM administrador WHERE id = $1";
+        const consulta = "DELETE FROM admin WHERE id = $1";
         const resultado = await db.query(consulta, [id]);
 
         if (resultado.rowCount === 0) {
