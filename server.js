@@ -4,12 +4,13 @@ import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import cors from "cors";
 
-app.use(cors());
-
 dotenv.config();
 const { Pool } = pkg;
 
 const app = express();
+
+app.use(cors());
+
 const port = process.env.PORT || 3000;
 let pool = null;
 const SALT_ROUNDS = 10;
