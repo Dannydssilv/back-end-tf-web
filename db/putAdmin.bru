@@ -5,9 +5,17 @@ meta {
 }
 
 put {
-  url: https://back-end-tf-web-chi.vercel.app/
-  body: none
+  url: https://back-end-tf-web-chi.vercel.app/admin/5
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+      "nome": "Livia Oliveira",
+      "email": "liv.oliv@email.com",
+      "senha": "livdbdgbfv" 
+  }
 }
 
 settings {

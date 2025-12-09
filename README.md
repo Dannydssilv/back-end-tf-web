@@ -1,20 +1,31 @@
 # back-end-tf-web
+
 Back-End do trabalho final da disciplina de WEB
 
-Integrantes:
-Ana Paula Souza Carvalho:https://github.com/anapaulaszc Daniely dos Santos Silva:https://github.com/Dannydssilv Lívia Oliveira Cunha:https://github.com/liviacunha14 Maria Eloísa Costa Silva: https://github.com/maeloisaaa
+## Integrantes
+- [Ana Paula Souza Carvalho](https://github.com/anapaulaszc)
+- [Daniely dos Santos Silva](https://github.com/Dannydssilv)
+- [Lívia Oliveira Cunha](https://github.com/liviacunha14)
+- [Maria Eloísa Costa Silva](https://github.com/maeloisaaa)
 
-Atv 5:
+---
 
-URL API: https://literate-space-garbanzo-4j64r7qwvvp93j75v-3000.app.github.dev
+## Atividade 5
 
-[GET] /admin:
-    Descrição: 
+**URL da API:** [https://literate-space-garbanzo-4j64r7qwvvp93j75v-3000.app.github.dev](https://literate-space-garbanzo-4j64r7qwvvp93j75v-3000.app.github.dev)
+
+---
+
+## Rotas de Admin
+
+### `[GET] /admin`
+Retorna todos os administradores:
+```json
 [
   {
     "id": 1,
     "nome": "Lívia Cunha",
-    "email": "livia.cunha@email.com" 
+    "email": "livia.cunha@email.com"
   },
   {
     "id": 2,
@@ -27,17 +38,19 @@ URL API: https://literate-space-garbanzo-4j64r7qwvvp93j75v-3000.app.github.dev
     "email": "danny.silva@email.com"
   }
 ]
-[GET] /admin/1
+```
 
-Descrição:
-[
+### `[GET] /admin/1`
+Retorna um administrador específico:
+```json
 {
-    "id": 1,
-    "nome":"Lívia Cunha",
-    "email": "livia.cunha@email.com", 
-    "senha": "chatgpt1l0ve"
+  "id": 1,
+  "nome": "Lívia Cunha",
+  "email": "livia.cunha@email.com",
+  "senha": "chatgpt1l0ve"
 }
-]
+```
+
 [POST] /admin
 
 Descrição:
