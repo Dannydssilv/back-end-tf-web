@@ -12,3 +12,8 @@ CREATE TABLE flashcards (
     resposta TEXT NOT NULL
 );
 
+CREATE TABLE avaliacoes (
+    id SERIAL PRIMARY KEY,
+    nota INTEGER NOT NULL,
+    comentario TEXT
+);

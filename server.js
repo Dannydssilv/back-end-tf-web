@@ -122,6 +122,58 @@ app.delete("/flashcards/:id", async (req, res) => {
     }
 });
 
+app.post("/avaliacoes", async (req, res) => {
+    try {
+        const { nota, comentario } = req.body;
+        
+        if (!nota) {
+            return res.status(400).json({ 
+                erro: "Dados inválidos", 
+                mensagem: "A nota é obrigatória." 
+            });
+        }
+
+        const db = conectarBD();
+        const consulta = "INSERT INTO avaliacoes (nota, comentario) VALUES ($1, $2) RETURNING *";
+        const resultado = await db.query(consulta, [nota, comentario]);
+        
+        res.status(201).json(resultado.rows[0]);
+    } catch (e) {
+        console.error("Erro ao salvar avaliação:", e);
+        res.status(500).json({ erro: "Erro interno do servidor" });
+    }
+});
+
+app.get("/avaliacoes", async (req, res) => {
+    const db = conectarBD();
+    try {
+        const resultado = await db.query("SELECT * FROM avaliacoes ORDER BY id DESC");
+        res.json(resultado.rows);
+    } catch (e) {
+        console.error("Erro ao buscar avaliações:", e);
+        res.status(500).json({ erro: "Erro interno do servidor" });
+    }
+});
+
+app.delete("/avaliacoes/:id", async (req, res) => {
+    try {
+        const id = parseInt(req.params.id, 10);
+        const db = conectarBD();
+
+        const consulta = "DELETE FROM avaliacoes WHERE id = $1";
+        const resultado = await db.query(consulta, [id]);
+
+        if (resultado.rowCount === 0) {
+            return res.status(404).json({ mensagem: "Avaliação não encontrada para exclusão" });
+        }
+
+        res.status(200).json({ mensagem: "Avaliação excluída com sucesso!" });
+    } catch (e) {
+        console.error("Erro ao excluir avaliação:", e);
+        res.status(500).json({ erro: "Erro interno do servidor" });
+    }
+});
+
 app.post("/admin", async (req, res) => {
     try {
         const { nome, email, senha } = req.body;
@@ -152,7 +204,7 @@ app.post("/admin", async (req, res) => {
 app.get("/admin", async (req, res) => {
     const db = conectarBD();
     try {
-        const resultado = await db.query("SELECT id AS id, nome, email FROM admin"); 
+        const resultado = await db.query("SELECT id AS id, nome, email, senha FROM admin"); 
         res.json(resultado.rows);
     } catch (e) {
         console.error("Erro ao listar administradores:", e);
@@ -222,6 +274,7 @@ app.delete("/admin/:id", async (req, res) => {
         res.status(500).json({ erro: "Erro interno do servidor" });
     }
 });
+
 
 app.get("/", async (req, res) => {
     const db = conectarBD();
